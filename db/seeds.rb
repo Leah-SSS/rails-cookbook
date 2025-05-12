@@ -7,3 +7,19 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+Recipe.destroy_all
+recipes_array = [
+{name: "Carbonara", description: "Egg pasta", image_url: "", rating: "8.7"},
+{name: "Macaronni", description: "Cheese pasta", image_url: "", rating: "6.3"},
+{name: "Bolognese", description: "Meat pasta", image_url: "", rating: "9.1"},
+{name: "Bolognese", description: "Meat pasta", image_url: "", rating: "9.1"},
+]
+
+recipes_array.each do |recipe| 
+    Recipe.create(name: recipe[:name], description: recipe[:description], image_url: recipe[:image_url], rating: recipe[:rating])
+    puts "Seeding #{recipe[:name]} complete"
+end
+
+
+
+
