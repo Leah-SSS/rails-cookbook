@@ -9,10 +9,10 @@
 #   end
 Recipe.destroy_all
 recipes_array = [
-{name: "Carbonara", description: "Egg pasta", image_url: "", rating: "8.7"},
-{name: "Macaronni", description: "Cheese pasta", image_url: "", rating: "6.3"},
-{name: "Bolognese", description: "Meat pasta", image_url: "", rating: "9.1"},
-{name: "Bolognese", description: "Meat pasta", image_url: "", rating: "9.1"},
+{name: "Carbonara", description: "Egg pasta", image_url: "", rating: "4.2"},
+{name: "Macaronni", description: "Cheese pasta", image_url: "", rating: "4.0"},
+{name: "Bolognese", description: "Meat pasta", image_url: "", rating: "4.8"},
+{name: "Pesto", description: "Pesto pasta", image_url: "", rating: "3.0"},
 ]
 
 recipes_array.each do |recipe| 
