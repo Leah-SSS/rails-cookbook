@@ -1,0 +1,20 @@
+<h1><%= "#{@category.name}" %></h1>
+
+<ul class="d-flex list-unstyled">
+   <%= @category.bookmarks.each do |bookmark| %>
+      <li>
+         <div class="card bg-secondary bg-gradient" style="width: 18rem;" >
+            <img src=<%= bookmark.recipe.image_url %> class="card-img-top img-fluid max-width:100% height:auto " alt=<%= bookmark.recipe.name %>>
+            <div class="card-body">
+               <h5 class="card-title"><%= bookmark.recipe.name %></h5>
+               <p class="card-text"><%= bookmark.recipe.description %></p>
+               <div> Comment: <%= bookmark.comment %></div>
+               <div class="btn btn-warning"><%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></div>
+            </div>
+         </div>
+      </li>
+   <% end %>
+</ul>
+
+<div class="btn btn-info"><%= link_to "Add Recipe", new_category_bookmark_path(params[:id])%></div>
+<div class="btn btn-info"><%= link_to "Return to Cook Book", categories_path%><div>

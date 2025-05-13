@@ -1,0 +1,8 @@
+<h1> Create Category </h1>
+
+<%= simple_form_for @category do |f| %>
+    <%= f.input :name %>
+    <%= f.submit class: "btn btn-primary"%>
+<% end %>
+
+<div> <%= link_to "Return to Categories", categories_path %></div>
