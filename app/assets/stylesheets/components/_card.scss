@@ -1,0 +1,75 @@
+.card-category {
+    background-size: cover;
+    background-position: center;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+    p {
+        margin: 0px;
+        font-size: 16px;
+    }
+}
+
+.card {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 16px;
+    justify-content: space-evenly;
+}
+
+
+
+.card-recipe {
+    width: 350px;
+    height: 500px;
+    position: relative;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+    img {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
+.btn-delete {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.card-description {
+    padding: 16px;
+
+    h5 {
+        font-weight: bold;
+        font-size: 24px;
+    }
+    
+    p {
+        font-size: 14px;
+    }
+}
+
+.card-bottom {
+    display: flex;
+    flex-grow: 1;
+    align-items: flex-end;
+    justify-content: space-between;
+    p {
+        font-size: 14px;
+    }
+}

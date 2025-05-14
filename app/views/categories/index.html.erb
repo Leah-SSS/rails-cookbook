@@ -1,7 +1,26 @@
-<h1> Cook Book </h1>
-<ol>
-    <% @categories.each do |category| %>
-        <li><%= link_to category.name, category_path(category.id)%><li>
-    <% end %>
-</ol>
-<div class="btn btn-info"><%= link_to "New Category", new_category_path %><div>
+<div class="banner" style="background-image: url(https://media.istockphoto.com/id/469852280/vector/a-retro-illustrated-cooking-banner.jpg?s=1024x1024&w=is&k=20&c=DT4E5w3zB5dbGlg1qKXe4pynPal1zqgB580ooXUdpZA=)">
+    <div class="backdrop">
+        <h1> CookBook </h1>
+        <p> Save your favourite Recipies! </p>
+    </div>
+</div>
+
+<div class="container w-75">
+    <div class="info-top"> 
+        <h2> List of Categories </h2>
+        <%= link_to "New Category", new_category_path, class: "btn btn-info"%> 
+    </div>
+
+    <div class="card">
+        <% @categories.each do |category| %>
+            <%= link_to category_path(category) do %>
+                <div class="card-category" style="background-image: url(https://media.istockphoto.com/id/846418868/photo/japanese-food-on-a-bamboo-mat.jpg?s=1024x1024&w=is&k=20&c=C5fxmWVsmfM0OuB-IlnRG0gG3AzFz4l2rC4zVMWLCOM=)">
+                    <div style="text-align: center" class="backdrop">
+                        <h3><%= category.name %></h3>
+                        <p><%= category.bookmarks.count %> recipies </p>
+                    </div>
+                </div> 
+            <% end %>
+        <% end %>
+    </div>
+</div>

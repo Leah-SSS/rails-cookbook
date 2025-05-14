@@ -1,20 +1,46 @@
-<h1><%= "#{@category.name}" %></h1>
+<div class="banner" style="background-image: url(https://media.istockphoto.com/id/1299672614/photo/full-english-breakfast-on-a-plate-with-fried-eggs-sausages-bacon-beans-toasts-and-coffee-on.jpg?s=1024x1024&w=is&k=20&c=eZLu9mepEbhmaC63rx65VbmjmqnOr7ujvy63jprtITk=)">
+    <div class="backdrop">
+        <h1> <%= "#{@category.name}" %></h1>
+    </div>
+</div>
 
-<ul class="d-flex list-unstyled">
-   <%= @category.bookmarks.each do |bookmark| %>
-      <li>
-         <div class="card bg-secondary bg-gradient" style="width: 18rem;" >
-            <img src=<%= bookmark.recipe.image_url %> class="card-img-top img-fluid max-width:100% height:auto " alt=<%= bookmark.recipe.name %>>
+<div class="container w-75">
+   <div class="info-top"> 
+      <h2> <%= "#{@category.name}" %> Recipies </h2>
+      <%= link_to "Add Recipe", new_category_bookmark_path(params[:id]), class: "btn btn-info"%> 
+   </div>
+
+   <div class="card">
+      <%= @category.bookmarks.each do |bookmark| %>
+         <div class="card-recipe">
+            <div>
+               <img src=<%= bookmark.recipe.image_url %>  alt=<%= bookmark.recipe.name %>>
+               <%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn-delete btn btn-warning"%>
+            </div>
+
             <div class="card-body">
-               <h5 class="card-title"><%= bookmark.recipe.name %></h5>
-               <p class="card-text"><%= bookmark.recipe.description %></p>
-               <div> Comment: <%= bookmark.comment %></div>
-               <div class="btn btn-warning"><%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></div>
+               <div class="card-description">
+                  <h5 class="card-title"><%= bookmark.recipe.name %></h5>
+                  <p class="card-text"><%= bookmark.recipe.description.truncate(200) %></p>
+               </div>
+
+               <div class="card-bottom"> 
+                  <p> Comment: <%= bookmark.comment.truncate(15) %></p>
+                  <p><%= '⭐' * bookmark.recipe.rating.floor %><p>
+               </div>
+
             </div>
          </div>
-      </li>
-   <% end %>
-</ul>
+      <% end %>
+   </div>
 
-<div class="btn btn-info"><%= link_to "Add Recipe", new_category_bookmark_path(params[:id])%></div>
+</div>
+
+
+
+
+
+
+
+
 <div class="btn btn-info"><%= link_to "Return to Cook Book", categories_path%><div>
