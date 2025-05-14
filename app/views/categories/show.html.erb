@@ -6,30 +6,34 @@
 
 <div class="container w-75">
    <div class="info-top"> 
+      <%= link_to "Return to Cook Book", categories_path, class: "btn btn-info"%>
       <h2> <%= "#{@category.name}" %> Recipies </h2>
       <%= link_to "Add Recipe", new_category_bookmark_path(params[:id]), class: "btn btn-info"%> 
    </div>
 
    <div class="card">
-      <%= @category.bookmarks.each do |bookmark| %>
+      <% @category.bookmarks.each do |bookmark| %>
          <div class="card-recipe">
-            <div>
-               <img src=<%= bookmark.recipe.image_url %>  alt=<%= bookmark.recipe.name %>>
-               <%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn-delete btn btn-warning"%>
-            </div>
+            <div class="card-top">
+               <div class="card-img">
+                  <img src=<%= bookmark.recipe.image_url %>  alt=<%= bookmark.recipe.name %>>
+                  <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn-delete btn btn-danger" do %>
+                     <i class="fa-solid fa-trash"></i>
+                  <% end %> 
+               </div>
 
-            <div class="card-body">
                <div class="card-description">
                   <h5 class="card-title"><%= bookmark.recipe.name %></h5>
                   <p class="card-text"><%= bookmark.recipe.description.truncate(200) %></p>
                </div>
-
-               <div class="card-bottom"> 
-                  <p> Comment: <%= bookmark.comment.truncate(15) %></p>
-                  <p><%= '⭐' * bookmark.recipe.rating.floor %><p>
-               </div>
-
+            
             </div>
+
+            <div class="card-bottom"> 
+               <p> Comment: <%= bookmark.comment.truncate(15) %></p>
+               <p><%= '⭐' * bookmark.recipe.rating.floor %><p>
+            </div>
+
          </div>
       <% end %>
    </div>
@@ -43,4 +47,4 @@
 
 
 
-<div class="btn btn-info"><%= link_to "Return to Cook Book", categories_path%><div>
+
